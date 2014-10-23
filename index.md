@@ -57,12 +57,19 @@ lm(mpg~ factor(am) + disp + drat+wt+hp+qsec+carb -1, data=mtcars)
 
 1. Model comparision was done using annova. The steps are given as follows
 
-```r
-f1  <- lm(mpg~factor(am) -1, data= mtcars)
-f2 <- update(fn , mpg~factor(am) +  drat+wt+qsec -1)
-f3 <- update(fn ,mpg~factor(am)  +  disp + drat+wt+hp+qsec+carb -1)
-anova(f1,f2,f3)
 
+```
+## Analysis of Variance Table
+## 
+## Model 1: mpg ~ factor(am) - 1
+## Model 2: mpg ~ factor(am) + drat + wt + qsec - 1
+## Model 3: mpg ~ factor(am) + disp + drat + wt + hp + qsec + carb - 1
+##   Res.Df RSS Df Sum of Sq     F  Pr(>F)    
+## 1     30 721                               
+## 2     27 168  3       553 29.50 3.2e-08 ***
+## 3     24 150  3        18  0.95    0.43    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 It shows that model 2 is the best model, Please use the web application to see the results.
 

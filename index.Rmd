@@ -57,10 +57,11 @@ lm(mpg~ factor(am) + disp + drat+wt+hp+qsec+carb -1, data=mtcars)
 
 1. Model comparision was done using annova. The steps are given as follows
 
-```r
+```{r  echo=F}
+data(mtcars)
 f1  <- lm(mpg~factor(am) -1, data= mtcars)
-f2 <- update(fn , mpg~factor(am) +  drat+wt+qsec -1)
-f3 <- update(fn ,mpg~factor(am)  +  disp + drat+wt+hp+qsec+carb -1)
+f2 <- update(f1, mpg~factor(am) +  drat+wt+qsec -1)
+f3 <- update(f1,mpg~factor(am)  +  disp + drat+wt+hp+qsec+carb -1)
 anova(f1,f2,f3)
 
 ```

@@ -115,11 +115,17 @@
 <li>Model comparision was done using annova. The steps are given as follows</li>
 </ol>
 
-<pre><code class="r">f1  &lt;- lm(mpg~factor(am) -1, data= mtcars)
-f2 &lt;- update(fn , mpg~factor(am) +  drat+wt+qsec -1)
-f3 &lt;- update(fn ,mpg~factor(am)  +  disp + drat+wt+hp+qsec+carb -1)
-anova(f1,f2,f3)
-
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: mpg ~ factor(am) - 1
+## Model 2: mpg ~ factor(am) + drat + wt + qsec - 1
+## Model 3: mpg ~ factor(am) + disp + drat + wt + hp + qsec + carb - 1
+##   Res.Df RSS Df Sum of Sq     F  Pr(&gt;F)    
+## 1     30 721                               
+## 2     27 168  3       553 29.50 3.2e-08 ***
+## 3     24 150  3        18  0.95    0.43    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 </code></pre>
 
 <p>It shows that model 2 is the best model, Please use the web application to see the results.</p>
