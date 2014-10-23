@@ -18,12 +18,14 @@ shinyUI(pageWithSidebar(
         ),
         mainPanel(
             h4('Synopsis'),
-            p('The objective of this analysis is to explore the relationship between a set of variables and miles per gallon (MPG) (outcome).'),
-            p('We are mainly intersted in exploring different models, explore the model statistics and compare the model using annova' ),
+            p('The objective of this analysis is to explore the relationship between a set of variables and miles per gallon (MPG) (outcome). The data available is mtcars'),
+            p('Three models are being explored here, use the comparison tab and all the models are visible over there' ),
+            h5('Manual'),
             p('The UI is divided into four tabs, the title of each one of it is self explainatory'),
             p('Please use the radio buttons on the left hand side to explore the different plots and statistics'),
+            p('Please choose a appropriate tab before selectin a option on the radio button'),
             tabsetPanel(
-                deployApp()("Different Plot",plotOutput("plot")),
+                tabPanel("Different Plot",plotOutput("plot")),
                 tabPanel("Summary Statistics",verbatimTextOutput("summary")),
                 tabPanel("Model Comparision", p("Model 2 turns out to be best based on p-value"),
                          verbatimTextOutput("annova")),
