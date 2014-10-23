@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multivariate Aalysis of mtcars Data</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Multivariate Aalysis of mtcars Data">
+  <meta name="author" content="Harvinder">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Multivariate Aalysis of mtcars Data</h1>
+    <h2></h2>
+    <p>Harvinder<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Synopsis</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Explore the relationship between a set of variables and miles per gallon (MPG) from mtcars data</li>
+<li>Make it interactive for the user so that user can learn by interaction</li>
+<li>Create graphs and display statistics </li>
+<li>Try different models using lm function</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Structure of the Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The web pages is divided into  four tabs</li>
+<li>Tab1 displays the graphs, pair wise, different models drawn on the same plot</li>
+<li>Tab2 displays the different statistics, these can be selected by selecting a radio button from the left hand side.</li>
+<li>Tab3 displays the model comparision, which is done using annova</li>
+<li>Tab4 display the mtcars data for reference</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id1" style="background:;">
+  <hgroup>
+    <h2>Modeling</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The author explored three different models</p>
+
+<ul>
+<li>First Model mpg with only  one feature (i.e. am) </li>
+</ul>
+
+<pre><code class="r">lm(mpg~factor(am) -1, data= mtcars)
+</code></pre>
+
+<ul>
+<li>Second model mpg with am, drat, wt and qsec</li>
+</ul>
+
+<pre><code class="r">lm(mpg~ factor(am) + drat+wt+qsec -1, data=mtcars)
+</code></pre>
+
+<ul>
+<li>Third model</li>
+</ul>
+
+<pre><code class="r">lm(mpg~ factor(am) + disp + drat+wt+hp+qsec+carb -1, data=mtcars)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id2" style="background:;">
+  <hgroup>
+    <h2>Model Comparison</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Model comparision was done using annova. The steps are given as follows</li>
+</ol>
+
+<pre><code class="r">f1  &lt;- lm(mpg~factor(am) -1, data= mtcars)
+f2 &lt;- update(fn , mpg~factor(am) +  drat+wt+qsec -1)
+f3 &lt;- update(fn ,mpg~factor(am)  +  disp + drat+wt+hp+qsec+carb -1)
+anova(f1,f2,f3)
+
+</code></pre>
+
+<p>It shows that model 2 is the best model, Please use the web application to see the results.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Synopsis'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Structure of the Application'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Modeling'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Model Comparison'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
